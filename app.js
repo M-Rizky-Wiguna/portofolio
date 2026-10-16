@@ -10,7 +10,7 @@ createApp({
       sent: false,
       fireflies: [],
       year: new Date().getFullYear(),
-      form: { name: "Moh RIzky Wiguna", email: "axlerrr9@gmail.com", message: "" },
+      form: { name: "", email: "", message: "" },
 
       // ====== UBAH DATA DI BAWAH INI ======
       profile: {
@@ -81,12 +81,12 @@ createApp({
         },
       ],
       skills: [
-        { name: "Vue.js", icon: "⚡", level: 80 },
-        { name: "CSS & Animasi", icon: "🎨", level: 85 },
-        { name: "UI/UX Design", icon: "🪄", level: 85 },
-        { name: "Ilustrasi Digital", icon: "🖌️", level: 80 },
-        { name: "Penulisan Naskah", icon: "📜", level: 1 },
-        { name: "JavaScript", icon: "🗝️", level: 70},
+        { name: "Vue.js", icon: "⚡", level: 41 },
+        { name: "CSS & Animasi", icon: "🎨", level: 45 },
+        { name: "UI/UX Design", icon: "🪄", level: 56 },
+        { name: "Ilustrasi Digital", icon: "🖌️", level: 50 },
+        { name: "JavaScript", icon: "🗝️", level: 43},
+        { name: "Adapt", icon: "🧠", level: 60 },
       ],
       timeline: [
         { year: "2026", role: "Lead Designer", place: "Studio Cahaya Bulan", desc: "Membangun produk digital bertema fantasi." },
