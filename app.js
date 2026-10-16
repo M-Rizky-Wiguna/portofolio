@@ -84,7 +84,7 @@ createApp({
         { name: "Vue.js", icon: "⚡", level: 41 },
         { name: "CSS & Animasi", icon: "🎨", level: 45 },
         { name: "UI/UX Design", icon: "🪄", level: 56 },
-        { name: "Ilustrasi Digital", icon: "🖌️", level: 50 },
+        { name: "berhayal", icon: "🖌️", level: 70 },
         { name: "JavaScript", icon: "🗝️", level: 43},
         { name: "Adapt", icon: "🧠", level: 60 },
       ],
