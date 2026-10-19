@@ -1,168 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio Fantasi</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div id="app" v-cloak>
-    <!-- Kunang-kunang -->
-    <div class="fireflies" aria-hidden="true">
-      <span v-for="f in fireflies" :key="f.id" class="firefly" :style="f.style"></span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/dragon.png" />
+    <title>Portofolio Fantasi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <!-- Kunang-kunang -->
+      <div class="fireflies" aria-hidden="true">
+        <span
+          v-for="f in fireflies"
+          :key="f.id"
+          class="firefly"
+          :style="f.style"
+        ></span>
+      </div>
+
+      <!-- Navigasi -->
+      <header class="nav" :class="{ scrolled }">
+        <a href="#gerbang" class="logo">⚜ {{ profile.initials }}</a>
+        <button class="burger" @click="menuOpen = !menuOpen" aria-label="Menu">
+          ☰
+        </button>
+        <nav :class="{ open: menuOpen }">
+          <a
+            v-for="m in menu"
+            :key="m.id"
+            :href="'#' + m.id"
+            @click="menuOpen = false"
+            >{{ m.label }}</a
+          >
+        </nav>
+      </header>
+
+      <main>
+        <!-- Gerbang / Hero -->
+        <section id="gerbang" class="hero">
+          <p class="eyebrow">Selamat datang, pengelana</p>
+          <h1>{{ profile.name }}</h1>
+          <p class="title">{{ profile.title }}</p>
+          <p class="tagline">{{ profile.tagline }}</p>
+          <div class="hero-actions">
+            <a href="#quest" class="btn">Lihat Karya</a>
+            <a href="#kontak" class="btn ghost">Panggil Saya</a>
+          </div>
+          <div class="scroll-hint">▼</div>
+        </section>
+
+        <!-- Tentang -->
+        <section id="kisah" class="section reveal">
+          <h2 class="section-title">Kisah Sang Pahlawan</h2>
+          <div class="divider">✦</div>
+          <div class="about">
+            <div class="portrait">
+              <div class="portrait-frame">
+                <span>{{ profile.initials }}</span>
+              </div>
+            </div>
+            <div class="about-text">
+              <p class="dropcap">{{ profile.about[0] }}</p>
+              <p v-for="(p, i) in profile.about.slice(1)" :key="i">{{ p }}</p>
+              <ul class="stats">
+                <li v-for="s in stats" :key="s.label">
+                  <strong>{{ s.value }}</strong><span>{{ s.label }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quest / Karya -->
+        <section id="quest" class="section reveal">
+          <h2 class="section-title">Quest yang Telah Ditaklukkan</h2>
+          <div class="divider">✦</div>
+          <div class="filters">
+            <button
+              v-for="c in categories"
+              :key="c"
+              :class="{ active: activeCategory === c }"
+              @click="activeCategory = c"
+            >
+              {{ c }}
+            </button>
+          </div>
+          <div class="grid">
+            <article
+              v-for="p in filteredProjects"
+              :key="p.id"
+              class="card"
+              @click="selected = p"
+              tabindex="0"
+              @keydown.enter="selected = p"
+            >
+              <div class="card-art" :style="{ background: p.gradient }">
+                <span class="rune">{{ p.icon }}</span>
+              </div>
+              <div class="card-body">
+                <span class="tag">{{ p.category }}</span>
+                <h3>{{ p.title }}</h3>
+                <p>{{ p.summary }}</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kemampuan -->
+        <section id="kemampuan" class="section reveal">
+          <h2 class="section-title">Kemampuan &amp; Sihir</h2>
+          <div class="divider">✦</div>
+          <div class="skills">
+            <div v-for="s in skills" :key="s.name" class="skill">
+              <div class="skill-head">
+                <span>{{ s.icon }} {{ s.name }}</span>
+                <span>Lv. {{ s.level }}</span>
+              </div>
+              <div class="bar">
+                <div class="fill" :style="{ width: s.level + '%' }"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Perjalanan -->
+        <section id="perjalanan" class="section reveal">
+          <h2 class="section-title">Peta Perjalanan</h2>
+          <div class="divider">✦</div>
+          <ol class="timeline">
+            <li v-for="t in timeline" :key="t.year">
+              <span class="year">{{ t.year }}</span>
+              <div class="event">
+                <h4>{{ t.role }}</h4>
+                <p>{{ t.place }}</p>
+                <small>{{ t.desc }}</small>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Kontak -->
+        <section id="kontak" class="section reveal">
+          <h2 class="section-title">Kirim Burung Hantu</h2>
+          <div class="divider">✦</div>
+          <form class="contact" @submit.prevent="sendMessage">
+            <input
+              v-model.trim="form.name"
+              type="text"
+              placeholder="Nama Anda"
+              required
+            />
+            <input
+              v-model.trim="form.email"
+              type="email"
+              placeholder="Email"
+              required
+            />
+            <textarea
+              v-model.trim="form.message"
+              rows="5"
+              placeholder="Pesan untuk sang penyihir..."
+              required
+            ></textarea>
+            <button class="btn" type="submit">Kirim Pesan</button>
+            <p v-if="sent" class="sent">
+              ✦ Burung hantu sudah terbang membawa pesanmu.
+            </p>
+          </form>
+
+          <h2 class="section-title" style="margin-top: 2rem">
+            Atau hubungi saya di:
+          </h2>
+          <div class="divider">✦</div>
+          <div class="kontak-info">
+            <div class="kontak-info-teks">
+              <div class="baris">
+                <h3>Email:</h3>
+                <p>{{ kontak[0].value }}</p>
+                <button @click="salinTeks(0)" class="btn-kontak">
+                  Salin Teks
+                </button>
+              </div>
+              <div class="kontak-info-teks">
+                <h3>Telepon:</h3>
+                <p>📱 {{ kontak[1].value }}</p>
+                <button @click="salinTeks(1)" class="btn-kontak">
+                  Salin Teks
+                </button>
+              </div>
+              <div class="kontak-info-teks">
+                <h3>Lokasi:</h3>
+                <p>📍 {{ kontak[2].value }}</p>
+                <button @click="salinTeks(2)" class="btn-kontak">
+                  Salin Teks
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="socials">
+            <a
+              v-for="s in socials"
+              :key="s.label"
+              :href="s.url"
+              target="_blank"
+              rel="noopener"
+              >{{ s.label }}</a
+            >
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          © {{ year }} {{ profile.name }} — Ditempa dengan sihir &amp; kode.
+        </p>
+      </footer>
+
+      <!-- Modal detail proyek -->
+      <transition name="fade">
+        <div
+          v-if="selected"
+          class="modal-backdrop"
+          @click.self="selected = null"
+        >
+          <div class="modal" role="dialog" aria-modal="true">
+            <button class="close" @click="selected = null" aria-label="Tutup">
+              ✕
+            </button>
+            <div class="modal-art" :style="{ background: selected.gradient }">
+              <span class="rune">{{ selected.icon }}</span>
+            </div>
+            <span class="tag">{{ selected.category }}</span>
+            <h3>{{ selected.title }}</h3>
+            <p>{{ selected.description }}</p>
+            <ul class="chips">
+              <li v-for="t in selected.tools" :key="t">{{ t }}</li>
+            </ul>
+            <a :href="selected.link" class="btn" target="_blank" rel="noopener"
+              >Buka Proyek</a
+            >
+          </div>
+        </div>
+      </transition>
     </div>
 
-    <!-- Navigasi -->
-    <header class="nav" :class="{ scrolled }">
-      <a href="#gerbang" class="logo">⚜ {{ profile.initials }}</a>
-      <button class="burger" @click="menuOpen = !menuOpen" aria-label="Menu">☰</button>
-      <nav :class="{ open: menuOpen }">
-        <a v-for="m in menu" :key="m.id" :href="'#' + m.id" @click="menuOpen = false">{{ m.label }}</a>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Gerbang / Hero -->
-      <section id="gerbang" class="hero">
-        <p class="eyebrow">Selamat datang, pengelana</p>
-        <h1>{{ profile.name }}</h1>
-        <p class="title">{{ profile.title }}</p>
-        <p class="tagline">{{ profile.tagline }}</p>
-        <div class="hero-actions">
-          <a href="#quest" class="btn">Lihat Karya</a>
-          <a href="#kontak" class="btn ghost">Panggil Saya</a>
-        </div>
-        <div class="scroll-hint">▼</div>
-      </section>
-
-      <!-- Tentang -->
-      <section id="kisah" class="section reveal">
-        <h2 class="section-title">Kisah Sang Pahlawan</h2>
-        <div class="divider">✦</div>
-        <div class="about">
-          <div class="portrait">
-            <div class="portrait-frame"><span>{{ profile.initials }}</span></div>
-          </div>
-          <div class="about-text">
-            <p class="dropcap">{{ profile.about[0] }}</p>
-            <p v-for="(p, i) in profile.about.slice(1)" :key="i">{{ p }}</p>
-            <ul class="stats">
-              <li v-for="s in stats" :key="s.label">
-                <strong>{{ s.value }}</strong><span>{{ s.label }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Quest / Karya -->
-      <section id="quest" class="section reveal">
-        <h2 class="section-title">Quest yang Telah Ditaklukkan</h2>
-        <div class="divider">✦</div>
-        <div class="filters">
-          <button
-            v-for="c in categories" :key="c"
-            :class="{ active: activeCategory === c }"
-            @click="activeCategory = c"
-          >{{ c }}</button>
-        </div>
-        <div class="grid">
-          <article
-            v-for="p in filteredProjects" :key="p.id"
-            class="card"
-            @click="selected = p"
-            tabindex="0"
-            @keydown.enter="selected = p"
-          >
-            <div class="card-art" :style="{ background: p.gradient }">
-              <span class="rune">{{ p.icon }}</span>
-            </div>
-            <div class="card-body">
-              <span class="tag">{{ p.category }}</span>
-              <h3>{{ p.title }}</h3>
-              <p>{{ p.summary }}</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Kemampuan -->
-      <section id="kemampuan" class="section reveal">
-        <h2 class="section-title">Kemampuan &amp; Sihir</h2>
-        <div class="divider">✦</div>
-        <div class="skills">
-          <div v-for="s in skills" :key="s.name" class="skill">
-            <div class="skill-head">
-              <span>{{ s.icon }} {{ s.name }}</span>
-              <span>Lv. {{ s.level }}</span>
-            </div>
-            <div class="bar"><div class="fill" :style="{ width: s.level + '%' }"></div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Perjalanan -->
-      <section id="perjalanan" class="section reveal">
-        <h2 class="section-title">Peta Perjalanan</h2>
-        <div class="divider">✦</div>
-        <ol class="timeline">
-          <li v-for="t in timeline" :key="t.year">
-            <span class="year">{{ t.year }}</span>
-            <div class="event">
-              <h4>{{ t.role }}</h4>
-              <p>{{ t.place }}</p>
-              <small>{{ t.desc }}</small>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <!-- Kontak -->
-      <section id="kontak" class="section reveal">
-        <h2 class="section-title">Kirim Burung Hantu</h2>
-        <div class="divider">✦</div>
-        <form class="contact" @submit.prevent="sendMessage">
-          <input v-model.trim="form.name" type="text" placeholder="Nama Anda" required />
-          <input v-model.trim="form.email" type="email" placeholder="Email" required />
-          <textarea v-model.trim="form.message" rows="5" placeholder="Pesan untuk sang penyihir..." required></textarea>
-          <button class="btn" type="submit">Kirim Pesan</button>
-          <p v-if="sent" class="sent">✦ Burung hantu sudah terbang membawa pesanmu.</p>
-        </form>
-        <div class="socials">
-          <a v-for="s in socials" :key="s.label" :href="s.url" target="_blank" rel="noopener">{{ s.label }}</a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>© {{ year }} {{ profile.name }} — Ditempa dengan sihir &amp; kode.</p>
-    </footer>
-
-    <!-- Modal detail proyek -->
-    <transition name="fade">
-      <div v-if="selected" class="modal-backdrop" @click.self="selected = null">
-        <div class="modal" role="dialog" aria-modal="true">
-          <button class="close" @click="selected = null" aria-label="Tutup">✕</button>
-          <div class="modal-art" :style="{ background: selected.gradient }">
-            <span class="rune">{{ selected.icon }}</span>
-          </div>
-          <span class="tag">{{ selected.category }}</span>
-          <h3>{{ selected.title }}</h3>
-          <p>{{ selected.description }}</p>
-          <ul class="chips">
-            <li v-for="t in selected.tools" :key="t">{{ t }}</li>
-          </ul>
-          <a :href="selected.link" class="btn" target="_blank" rel="noopener">Buka Proyek</a>
-        </div>
-      </div>
-    </transition>
-  </div>
-
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-  <script src="app.js"></script>
-</body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>

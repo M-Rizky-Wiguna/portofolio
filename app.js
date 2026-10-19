@@ -17,10 +17,12 @@ createApp({
         name: "Mas IKYY",
         initials: "R",
         title: "Penenun Dunia Digital",
-        tagline: "Merancang antarmuka, ilustrasi, dan dunia imajinasi yang hidup.",
+        tagline:
+          "Merancang antarmuka, ilustrasi, dan dunia imajinasi yang hidup.",
         about: [
           "Dahulu kala, seorang pengelana meninggalkan desa kecilnya dengan sebuah pena dan layar kosong. Kini ia menciptakan dunia yang bisa dijelajahi siapa pun.",
           "Dengan pengalaman bertahun-tahun di bidang desain dan pengembangan, saya percaya setiap produk punya cerita, dan tugas saya adalah membuatnya terasa ajaib sekaligus mudah digunakan.",
+          "Saya ingin mempelajari lebih banyak tentang dunia digital, dan terus menenun kisah-kisah baru yang memikat. saya juga ingin meneruskan perjalanan sebagai pengelana pengembangan game dan deasin antarmuka, sambil menjelajahi dunia fantasi yang tak terbatas.",
         ],
       },
       stats: [
@@ -38,46 +40,76 @@ createApp({
       ],
       projects: [
         {
-          id: 1, title: "Kronik Eldoria", category: "Web",
-          icon: "🏰", gradient: "linear-gradient(135deg,#2a1f4d,#8e5cff)",
+          id: 1,
+          title: "Kronik Eldoria",
+          category: "Web",
+          icon: "🏰",
+          gradient: "linear-gradient(135deg,#2a1f4d,#8e5cff)",
           summary: "Situs wiki interaktif untuk dunia fantasi buatan sendiri.",
-          description: "Platform wiki dengan peta interaktif, silsilah karakter, dan pencarian cepat. Dibangun agar penulis dapat mengelola lore dunianya dengan rapi.",
-          tools: ["Vue 3", "CSS", "Node.js"], link: "#",
+          description:
+            "Platform wiki dengan peta interaktif, silsilah karakter, dan pencarian cepat. Dibangun agar penulis dapat mengelola lore dunianya dengan rapi.",
+          tools: ["Vue 3", "CSS", "Node.js"],
+          link: "#",
         },
         {
-          id: 2, title: "Naga Pelindung", category: "Ilustrasi",
-          icon: "🐉", gradient: "linear-gradient(135deg,#4a0f1a,#c9a24b)",
+          id: 2,
+          title: "Naga Pelindung",
+          category: "Ilustrasi",
+          icon: "🐉",
+          gradient: "linear-gradient(135deg,#4a0f1a,#c9a24b)",
           summary: "Seri ilustrasi naga untuk sampul novel fantasi.",
-          description: "Lima ilustrasi sampul dengan palet merah anggur dan emas, dikerjakan digital dengan tekstur kertas tua.",
-          tools: ["Procreate", "Photoshop"], link: "#",
+          description:
+            "Lima ilustrasi sampul dengan palet merah anggur dan emas, dikerjakan digital dengan tekstur kertas tua.",
+          tools: ["Procreate", "Photoshop"],
+          link: "#",
         },
         {
-          id: 3, title: "Rune UI Kit", category: "UI/UX",
-          icon: "🔮", gradient: "linear-gradient(135deg,#0f2a2e,#5ce1e6)",
+          id: 3,
+          title: "Rune UI Kit",
+          category: "UI/UX",
+          icon: "🔮",
+          gradient: "linear-gradient(135deg,#0f2a2e,#5ce1e6)",
           summary: "Design system bertema sihir untuk aplikasi game.",
-          description: "Kumpulan komponen UI, ikon bergaya rune, dan panduan tipografi untuk aplikasi game kartu fantasi.",
-          tools: ["Figma", "Design Tokens"], link: "#",
+          description:
+            "Kumpulan komponen UI, ikon bergaya rune, dan panduan tipografi untuk aplikasi game kartu fantasi.",
+          tools: ["Figma", "Design Tokens"],
+          link: "#",
         },
         {
-          id: 4, title: "Hutan Berbisik", category: "Web",
-          icon: "🌲", gradient: "linear-gradient(135deg,#12261a,#7fb7be)",
+          id: 4,
+          title: "Hutan Berbisik",
+          category: "Web",
+          icon: "🌲",
+          gradient: "linear-gradient(135deg,#12261a,#7fb7be)",
           summary: "Landing page imersif dengan animasi parallax hutan.",
-          description: "Pengalaman scroll bercerita dengan lapisan parallax, efek kunang-kunang, dan audio ambient opsional.",
-          tools: ["Vue 3", "GSAP", "CSS"], link: "#",
+          description:
+            "Pengalaman scroll bercerita dengan lapisan parallax, efek kunang-kunang, dan audio ambient opsional.",
+          tools: ["Vue 3", "GSAP", "CSS"],
+          link: "#",
         },
         {
-          id: 5, title: "Grimoire Resep", category: "UI/UX",
-          icon: "📖", gradient: "linear-gradient(135deg,#3b2a14,#e8d9b5)",
+          id: 5,
+          title: "Grimoire Resep",
+          category: "UI/UX",
+          icon: "📖",
+          gradient: "linear-gradient(135deg,#3b2a14,#e8d9b5)",
           summary: "Aplikasi resep dengan tampilan buku mantra kuno.",
-          description: "Desain aplikasi mobile bertema buku mantra, lengkap dengan animasi halaman dan mode memasak.",
-          tools: ["Figma", "Prototyping"], link: "#",
+          description:
+            "Desain aplikasi mobile bertema buku mantra, lengkap dengan animasi halaman dan mode memasak.",
+          tools: ["Figma", "Prototyping"],
+          link: "#",
         },
         {
-          id: 6, title: "Penjaga Gerbang", category: "Ilustrasi",
-          icon: "⚔️", gradient: "linear-gradient(135deg,#1a1a22,#9aa0b5)",
+          id: 6,
+          title: "Penjaga Gerbang",
+          category: "Ilustrasi",
+          icon: "⚔️",
+          gradient: "linear-gradient(135deg,#1a1a22,#9aa0b5)",
           summary: "Desain karakter ksatria untuk proyek game indie.",
-          description: "Concept art karakter, turnaround sheet, dan variasi kostum untuk game RPG indie.",
-          tools: ["Clip Studio", "Blender"], link: "#",
+          description:
+            "Concept art karakter, turnaround sheet, dan variasi kostum untuk game RPG indie.",
+          tools: ["Clip Studio", "Blender"],
+          link: "#",
         },
       ],
       skills: [
@@ -85,22 +117,35 @@ createApp({
         { name: "CSS & Animasi", icon: "🎨", level: 45 },
         { name: "UI/UX Design", icon: "🪄", level: 56 },
         { name: "berhayal", icon: "🖌️", level: 70 },
-        { name: "JavaScript", icon: "🗝️", level: 43},
+        { name: "JavaScript", icon: "🗝️", level: 43 },
         { name: "Adapt", icon: "🧠", level: 60 },
       ],
       timeline: [
-        { year: "2026", role: "Lead Designer", place: "Studio Cahaya Bulan", desc: "Membangun produk digital bertema fantasi." },
-        { year: "2025", role: "Front-end Developer", place: "Perkemahan", desc: "Mempelajari sihir dasar HTML Dan CSS." },
-
+        {
+          year: "2026",
+          role: "Lead Designer",
+          place: "Studio Cahaya Bulan",
+          desc: "Membangun produk digital bertema fantasi.",
+        },
+        {
+          year: "2025",
+          role: "Front-end Developer",
+          place: "Perkemahan",
+          desc: "Mempelajari sihir dasar HTML Dan CSS.",
+        },
       ],
       socials: [
         { label: "GitHub", url: "https://github.com/M-Rizky-Wiguna/" },
-        { label: "TikTok", url: "https://tiktok.com/@maskyylohya"},
-        { label: "Instagram (Problem)", url: "https://instagram.com/maskyylohya" },
+        { label: "TikTok", url: "https://tiktok.com/@maskyylohya" },
+        { label: "Instagram", url: "https://www.instagram.com/Ikyy_wgn" },
       ],
+      kontak: [
+        { label: "Email", value: "axlerrr9@gmail.com" },
+        { label: "Telepon", value: "+62-9532-1532-579" },
+        { label: "Lokasi", value: "Indonesia" }
+      ]
     };
   },
-
   computed: {
     categories() {
       return ["Semua", ...new Set(this.projects.map((p) => p.category))];
@@ -137,7 +182,7 @@ createApp({
             }
           });
         },
-        { threshold: 0.12 }
+        { threshold: 0.12 },
       );
       document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
     },
