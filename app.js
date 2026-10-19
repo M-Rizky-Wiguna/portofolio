@@ -94,9 +94,9 @@ createApp({
 
       ],
       socials: [
-        { label: "GitHub", url: "https://github.com/" },
-        { label: "Behance", url: "https://behance.net/" },
-        { label: "LinkedIn", url: "https://linkedin.com/" },
+        { label: "GitHub", url: "https://github.com/M-Rizky-Wiguna/" },
+        { label: "TikTok", url: "https://tiktok.com/@maskyylohya"},
+        { label: "Instagram (Problem)", url: "https://instagram.com/maskyylohya" },
       ],
     };
   },
